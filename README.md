@@ -15,3 +15,10 @@ The Python environment used for the experiment in this paper is as follows:
 - rdkit  2021.03.1
 - tensorboard  2.5.0
 - ogb  1.3.1
+
+The configuration of the computer used in the experiment is as follows:
+- System: Linux (Ubuntu 18.04 LTS)
+- CPU: Intel(R) Xeon(R) W-2223 @3.60GHz
+- CPU Memory: 32GB
+- GPU: GeForce RTX 3080 (10 GB)
+
