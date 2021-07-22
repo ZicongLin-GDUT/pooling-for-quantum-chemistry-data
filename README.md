@@ -25,7 +25,20 @@ The configuration of the computer used in the experiment is as follows:
 ## Usages
 If you want to replicate the experiment in this paper, you can use the following command-line code (use GIN-based model with mean pooling as an example):
 ```python
-python main_demo.py --gnn gin --pooling_method global --graph_pooling mean --residual True --JK concat --num_workers 4\
---log_dir './log' --checkpoint_dir './ckpt' --save_test_dir './result'
+python main_demo.py --gnn gin --pooling_method global --graph_pooling mean --residual True --JK concat --num_workers 4 --log_dir './log' --checkpoint_dir './ckpt' --save_test_dir './result'
 ```
 Explanation and default values for all command-line parameters can be found in `main_demo.py`.
+
+The following code can be used to check your training process:
+```python
+from tensorboard.backend.event_processing import event_accumulator
+
+# open the log file
+ea = event_accumulator.EventAccumulator(file_path)  # Change file_path to your file path
+ea.Reload()
+# read data
+train = ea.scalars.Items('train/mae')
+valid = ea.scalars.Items('valid/mae')
+train_mae = [epoch.value for epoch in train]
+valid_mae = [epoch.value for epoch in valid]
+```
