@@ -2,7 +2,7 @@
 The source code of paper Different Pooling Methods in Graph Neural Network for Large Scale Quantum Chemistry Data. 
 
 ## Requirements
-The Python environment used for the experiment in this paper is as follows:
+The **Python environment** used for the experiment in this paper is as follows:
 - Python  3.6.13
 - CUDA  11.2
 - Pytorch  1.8.0
@@ -16,7 +16,7 @@ The Python environment used for the experiment in this paper is as follows:
 - tensorboard  2.5.0
 - ogb  1.3.1
 
-The configuration of the computer used in the experiment is as follows:
+The **configuration of the computer** used in the experiment is as follows:
 - System: Linux (Ubuntu 18.04 LTS)
 - CPU: Intel(R) Xeon(R) W-2223 @3.60GHz
 - Memory: 32GB
