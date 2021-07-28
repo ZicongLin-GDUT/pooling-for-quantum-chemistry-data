@@ -86,7 +86,7 @@ class GlobalGNN(torch.nn.Module):
             return output
         else:
             # At inference time, relu is applied to output to ensure positivity
-            return torch.clamp(output, min=0, max=50)  # 限定HOMO-LUMO gap在(0,50)之间
+            return torch.clamp(output, min=0, max=50)  # the output is between 0 and 50 in dataset.
 
 
 class HierarchicalGNN(torch.nn.Module):
@@ -155,7 +155,7 @@ class HierarchicalGNN(torch.nn.Module):
             return output
         else:
             # At inference time, relu is applied to output to ensure positivity
-            return torch.clamp(output, min=0, max=50)  # 限定HOMO-LUMO gap在(0,50)之间
+            return torch.clamp(output, min=0, max=50)
 
 
 if __name__ == '__main__':
