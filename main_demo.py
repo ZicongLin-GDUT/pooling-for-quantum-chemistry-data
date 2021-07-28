@@ -53,7 +53,7 @@ def eval(model, device, loader, evaluator):
         y_true.append(batch.y.view(pred.shape).detach().cpu())
         y_pred.append(pred.detach().cpu())
 
-    y_true = torch.cat(y_true, dim=0)  # 此处cat的作用还没看懂
+    y_true = torch.cat(y_true, dim=0)
     y_pred = torch.cat(y_pred, dim=0)
 
     input_dict = {"y_true": y_true, "y_pred": y_pred}
@@ -173,13 +173,11 @@ def main():
 
     optimizer = optim.Adam(model.parameters(), lr=0.001)
 
-    # 调用tensorboard库记录log
     if args.log_dir is not '':
         writer = SummaryWriter(log_dir=args.log_dir)
 
     best_valid_mae = 1000
 
-    # StepLR会根据设置衰减学习率
     if args.train_subset:
         scheduler = StepLR(optimizer, step_size=300, gamma=0.25)
         args.epochs = 1000
@@ -198,12 +196,10 @@ def main():
 
         print({'Train': train_mae, 'Validation': valid_mae})
 
-        # 记录每个epoch的值
         if args.log_dir is not '':
             writer.add_scalar('valid/mae', valid_mae, epoch)
             writer.add_scalar('train/mae', train_mae, epoch)
 
-        # 保存checkpoint
         if valid_mae < best_valid_mae:
             best_valid_mae = valid_mae
             if args.checkpoint_dir is not '':
@@ -214,7 +210,6 @@ def main():
                               'num_params': num_params}
                 torch.save(checkpoint, os.path.join(args.checkpoint_dir, 'checkpoint.pt'))
 
-            # 当出现新的checkpoint时,进行新的预测
             if args.save_test_dir is not '':
                 print('Predicting on test data...')
                 y_pred = test(model, device, test_loader)
