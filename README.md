@@ -1,5 +1,5 @@
 # pooling-for-quantum-chemistry-data
-The source code of paper Different Pooling Methods in Graph Neural Network for Large Scale Quantum Chemistry Data. 
+The source code of paper The research on Pooling Methods in Graph Neural Network for Large Scale Quantum Chemistry Data.
 
 ## Requirements
 The **Python environment** used for the experiment in this paper is as follows:
